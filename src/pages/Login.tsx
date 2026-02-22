@@ -44,8 +44,8 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container pt-24 pb-16 flex justify-center">
-        <Card className="w-full max-w-md">
+      <main className="container pt-20 tablet:pt-24 pb-10 tablet:pb-16 flex justify-center px-4">
+        <Card className="w-full max-w-md min-w-0">
           <CardHeader className="text-center">
             <CardTitle className="font-display text-2xl">Вход в аккаунт</CardTitle>
             <CardDescription>Введите email и пароль</CardDescription>

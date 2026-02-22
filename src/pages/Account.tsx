@@ -148,30 +148,30 @@ const Account = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container pt-24 pb-16">
-        <div className="flex items-center gap-2 mb-8">
-          <User className="w-8 h-8 text-accent" />
-          <h1 className="font-display text-3xl text-foreground tracking-tight">
+      <main className="container pt-20 tablet:pt-24 pb-10 tablet:pb-16">
+        <div className="flex items-center gap-2 mb-6 tablet:mb-8 min-w-0">
+          <User className="w-7 h-7 tablet:w-8 tablet:h-8 text-accent shrink-0" />
+          <h1 className="font-display text-2xl tablet:text-3xl text-foreground tracking-tight truncate">
             Личный кабинет
           </h1>
         </div>
-        <p className="text-muted-foreground mb-6">
+        <p className="text-muted-foreground mb-4 tablet:mb-6 text-sm tablet:text-base break-words">
           {user.name} · {user.email}
         </p>
 
         <Tabs defaultValue="repair" className="space-y-6">
-          <TabsList className="grid w-full max-w-md grid-cols-3 h-auto p-1 gap-1 bg-muted">
-            <TabsTrigger value="repair" className="flex items-center gap-2 py-2.5">
-              <Wrench className="w-4 h-4" />
-              <span className="hidden sm:inline">История ремонта</span>
+          <TabsList className="grid w-full max-w-md grid-cols-3 h-auto p-1 gap-0.5 tablet:gap-1 bg-muted">
+            <TabsTrigger value="repair" className="flex items-center justify-center gap-1 tablet:gap-2 py-2 tablet:py-2.5 text-xs tablet:text-sm">
+              <Wrench className="w-3.5 h-3.5 tablet:w-4 tablet:h-4 shrink-0" />
+              <span className="hidden tablet:inline truncate">История ремонта</span>
             </TabsTrigger>
-            <TabsTrigger value="cars" className="flex items-center gap-2 py-2.5">
-              <Car className="w-4 h-4" />
-              <span className="hidden sm:inline">Мои автомобили</span>
+            <TabsTrigger value="cars" className="flex items-center justify-center gap-1 tablet:gap-2 py-2 tablet:py-2.5 text-xs tablet:text-sm">
+              <Car className="w-3.5 h-3.5 tablet:w-4 tablet:h-4 shrink-0" />
+              <span className="hidden tablet:inline truncate">Мои автомобили</span>
             </TabsTrigger>
-            <TabsTrigger value="payments" className="flex items-center gap-2 py-2.5">
-              <CreditCard className="w-4 h-4" />
-              <span className="hidden sm:inline">Оплата</span>
+            <TabsTrigger value="payments" className="flex items-center justify-center gap-1 tablet:gap-2 py-2 tablet:py-2.5 text-xs tablet:text-sm">
+              <CreditCard className="w-3.5 h-3.5 tablet:w-4 tablet:h-4 shrink-0" />
+              <span className="hidden tablet:inline truncate">Оплата</span>
             </TabsTrigger>
           </TabsList>
 
@@ -237,12 +237,12 @@ const Account = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <Form {...carForm}>
-                  <form onSubmit={carForm.handleSubmit(onAddCar)} className="flex flex-col sm:flex-row gap-4">
+                  <form onSubmit={carForm.handleSubmit(onAddCar)} className="flex flex-col tablet:flex-row gap-4">
                     <FormField
                       control={carForm.control}
                       name="plateNumber"
                       render={({ field }) => (
-                        <FormItem className="sm:max-w-[200px]">
+                        <FormItem className="tablet:max-w-[200px]">
                           <FormLabel>Гос. номер</FormLabel>
                           <FormControl>
                             <Input
@@ -259,7 +259,7 @@ const Account = () => {
                       control={carForm.control}
                       name="model"
                       render={({ field }) => (
-                        <FormItem className="flex-1 min-w-[180px]">
+                        <FormItem className="flex-1 min-w-0 tablet:min-w-[180px]">
                           <FormLabel>Модель</FormLabel>
                           <Select
                             onValueChange={field.onChange}
@@ -399,9 +399,9 @@ const Account = () => {
                     {paymentMethods.map((pm) => (
                       <li
                         key={pm.id}
-                        className="flex items-center justify-between rounded-md border px-4 py-3"
+                        className="flex flex-col tablet:flex-row tablet:items-center tablet:justify-between gap-2 rounded-md border px-3 tablet:px-4 py-3 min-w-0"
                       >
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 min-w-0 flex-wrap">
                           <CreditCard className="w-4 h-4 text-muted-foreground" />
                           <span>{paymentTypeLabel[pm.type]} — {pm.title}</span>
                           {pm.last4 && (

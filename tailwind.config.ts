@@ -7,10 +7,24 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: {
+        DEFAULT: "1rem",
+        tablet: "1.25rem",
+        xl: "1.5rem",
+      },
       screens: {
+        tablet: "800px",
+        xl: "1280px",
         "2xl": "1400px",
       },
+    },
+    screens: {
+      sm: "640px",
+      md: "768px",
+      tablet: "800px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
       fontFamily: {

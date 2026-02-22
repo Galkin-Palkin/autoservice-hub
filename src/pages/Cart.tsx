@@ -19,10 +19,10 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container pt-24 pb-16">
-        <div className="flex items-center gap-2 mb-8">
-          <ShoppingCart className="w-8 h-8 text-accent" />
-          <h1 className="font-display text-3xl text-foreground tracking-tight">
+      <main className="container pt-20 tablet:pt-24 pb-10 tablet:pb-16">
+        <div className="flex items-center gap-2 mb-6 tablet:mb-8 min-w-0">
+          <ShoppingCart className="w-7 h-7 tablet:w-8 tablet:h-8 text-accent shrink-0" />
+          <h1 className="font-display text-2xl tablet:text-3xl text-foreground tracking-tight truncate">
             Корзина {count > 0 && `(${count})`}
           </h1>
         </div>
@@ -41,12 +41,12 @@ const Cart = () => {
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-2 space-y-4">
+          <div className="grid gap-4 tablet:gap-6 xl:grid-cols-3">
+            <div className="xl:col-span-2 space-y-4 min-w-0">
               {items.map((item) => (
                 <Card key={item.id} className="overflow-hidden">
                   <CardContent className="p-0">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4">
+                    <div className="flex flex-col tablet:flex-row tablet:items-center tablet:justify-between gap-4 p-4 min-w-0">
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-card-foreground truncate">
                           {item.name}
@@ -56,7 +56,7 @@ const Cart = () => {
                           {item.price}
                         </p>
                       </div>
-                      <div className="flex items-center gap-2 sm:gap-4">
+                      <div className="flex items-center gap-2 tablet:gap-4 shrink-0">
                         <div className="flex items-center border rounded-md">
                           <Button
                             variant="ghost"
@@ -93,7 +93,7 @@ const Cart = () => {
               ))}
             </div>
 
-            <div>
+            <div className="min-w-0">
               <Card>
                 <CardHeader>
                   <h2 className="font-display text-xl text-card-foreground">Итого</h2>

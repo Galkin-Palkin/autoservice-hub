@@ -13,20 +13,20 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-border/10">
-      <div className="container flex items-center justify-between h-16 md:h-20">
+      <div className="container flex items-center justify-between h-14 tablet:h-16 xl:h-20 gap-2 min-w-0">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="w-9 h-9 rounded-md bg-accent-gradient flex items-center justify-center">
-            <span className="font-display text-accent-foreground font-bold text-lg">З</span>
+        <Link to="/" className="flex items-center gap-2 shrink-0" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <div className="w-8 h-8 tablet:w-9 tablet:h-9 rounded-md bg-accent-gradient flex items-center justify-center">
+            <span className="font-display text-accent-foreground font-bold text-base tablet:text-lg">З</span>
           </div>
-          <div className="hidden sm:block">
-            <span className="font-display text-primary-foreground text-lg tracking-wide">ЗАПЧАСТИ</span>
-            <span className="font-display text-accent text-lg tracking-wide"> + СЕРВИС</span>
+          <div className="hidden tablet:block truncate">
+            <span className="font-display text-primary-foreground text-base xl:text-lg tracking-wide">ЗАПЧАСТИ</span>
+            <span className="font-display text-accent text-base xl:text-lg tracking-wide"> + СЕРВИС</span>
           </div>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden tablet:flex items-center gap-4 xl:gap-8 shrink-0">
           <Link to="/#parts" className="text-primary-foreground/70 hover:text-accent transition-colors text-sm font-medium tracking-wide uppercase">
             Запчасти
           </Link>
@@ -43,11 +43,11 @@ const Header = () => {
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
-          <Button asChild variant="ghost" size="sm" className="relative hidden md:flex text-primary-foreground/80 hover:text-accent hover:bg-accent/10">
-            <Link to="/cart">
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Корзина
+        <div className="flex items-center gap-1.5 tablet:gap-3 shrink-0">
+          <Button asChild variant="ghost" size="sm" className="relative hidden tablet:flex text-primary-foreground/80 hover:text-accent hover:bg-accent/10">
+            <Link to="/cart" className="flex items-center">
+              <ShoppingCart className="w-4 h-4 xl:mr-2 shrink-0" />
+              <span className="hidden xl:inline">Корзина</span>
               {count > 0 && (
                 <Badge className="ml-1.5 h-5 min-w-5 px-1.5 bg-accent text-accent-foreground border-0 text-xs">
                   {count}
@@ -57,36 +57,37 @@ const Header = () => {
           </Button>
           {user ? (
             <>
-              <Button asChild variant="ghost" size="sm" className="hidden md:flex text-primary-foreground/80 hover:text-accent hover:bg-accent/10">
+              <Button asChild variant="ghost" size="sm" className="hidden tablet:flex text-primary-foreground/80 hover:text-accent hover:bg-accent/10">
                 <Link to="/account">
-                  <UserCircle className="w-4 h-4 mr-2" />
-                  Личный кабинет
+                  <UserCircle className="w-4 h-4 mr-2 shrink-0" />
+                  <span className="hidden xl:inline">Личный кабинет</span>
                 </Link>
               </Button>
-              <span className="hidden md:inline text-primary-foreground/80 text-sm truncate max-w-[120px]">
+              <span className="hidden xl:inline text-primary-foreground/80 text-sm truncate max-w-[120px]">
                 {user.name}
               </span>
-              <Button variant="ghost" size="sm" className="hidden md:flex text-primary-foreground/80 hover:text-accent" onClick={logout}>
-                <LogOut className="w-4 h-4 mr-2" />
-                Выйти
+              <Button variant="ghost" size="sm" className="hidden tablet:flex text-primary-foreground/80 hover:text-accent" onClick={logout}>
+                <LogOut className="w-4 h-4 mr-2 shrink-0" />
+                <span className="hidden xl:inline">Выйти</span>
               </Button>
             </>
           ) : (
             <>
-              <Button asChild variant="ghost" size="sm" className="hidden md:flex text-primary-foreground/80 hover:text-accent hover:bg-accent/10">
+              <Button asChild variant="ghost" size="sm" className="hidden tablet:flex text-primary-foreground/80 hover:text-accent hover:bg-accent/10">
                 <Link to="/login">
-                  <User className="w-4 h-4 mr-2" />
-                  Войти
+                  <User className="w-4 h-4 mr-2 shrink-0" />
+                  <span className="hidden xl:inline">Войти</span>
                 </Link>
               </Button>
-              <Button asChild size="sm" className="hidden md:flex bg-accent-gradient text-accent-foreground hover:opacity-90 font-semibold shadow-glow">
+              <Button asChild size="sm" className="hidden tablet:flex bg-accent-gradient text-accent-foreground hover:opacity-90 font-semibold shadow-glow">
                 <Link to="/register">Регистрация</Link>
               </Button>
             </>
           )}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-primary-foreground/80 p-2"
+            className="tablet:hidden text-primary-foreground/80 p-2 touch-manipulation"
+            aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -95,7 +96,7 @@ const Header = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-primary border-t border-border/10 animate-fade-in">
+        <div className="tablet:hidden bg-primary border-t border-border/10 animate-fade-in">
           <nav className="container py-4 flex flex-col gap-3">
             <Link to="/#parts" className="text-primary-foreground/70 hover:text-accent py-2 text-sm uppercase tracking-wide" onClick={() => setMobileOpen(false)}>Запчасти</Link>
             <Link to="/repair" className="text-primary-foreground/70 hover:text-accent py-2 text-sm uppercase tracking-wide" onClick={() => setMobileOpen(false)}>Ремонт</Link>

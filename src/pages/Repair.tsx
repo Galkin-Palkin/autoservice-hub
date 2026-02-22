@@ -247,20 +247,20 @@ const Repair = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container pt-24 pb-16">
-        <div className="flex items-center gap-2 mb-8">
-          <Wrench className="w-8 h-8 text-accent" />
-          <h1 className="font-display text-3xl text-foreground tracking-tight">
+      <main className="container pt-20 tablet:pt-24 pb-10 tablet:pb-16">
+        <div className="flex items-center gap-2 mb-6 tablet:mb-8 min-w-0">
+          <Wrench className="w-7 h-7 tablet:w-8 tablet:h-8 text-accent shrink-0" />
+          <h1 className="font-display text-2xl tablet:text-3xl text-foreground tracking-tight truncate">
             Запись на ремонт
           </h1>
         </div>
 
         {/* Progress Steps */}
-        <div className="mb-8">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+        <div className="mb-6 tablet:mb-8 overflow-x-auto pb-2 -mx-1">
+          <div className="flex items-center gap-2 tablet:gap-4 min-w-max">
+            <div className="flex items-center gap-1.5 tablet:gap-2 shrink-0">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                className={`w-8 h-8 tablet:w-10 tablet:h-10 rounded-full flex items-center justify-center font-semibold text-sm tablet:text-base ${
                   currentStep === "service"
                     ? "bg-accent-gradient text-accent-foreground"
                     : selectedService
@@ -270,12 +270,12 @@ const Repair = () => {
               >
                 {selectedService ? <Check className="w-5 h-5" /> : "1"}
               </div>
-              <span className="text-sm font-medium">Услуга</span>
+              <span className="text-xs tablet:text-sm font-medium whitespace-nowrap">Услуга</span>
             </div>
-            <ArrowRight className="w-4 h-4 text-muted-foreground" />
-            <div className="flex items-center gap-2">
+            <ArrowRight className="w-3 h-3 tablet:w-4 tablet:h-4 text-muted-foreground shrink-0" />
+            <div className="flex items-center gap-1.5 tablet:gap-2 shrink-0">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                className={`w-8 h-8 tablet:w-10 tablet:h-10 rounded-full flex items-center justify-center font-semibold text-sm tablet:text-base ${
                   currentStep === "car"
                     ? "bg-accent-gradient text-accent-foreground"
                     : selectedCarId
@@ -285,14 +285,14 @@ const Repair = () => {
               >
                 {selectedCarId ? <Check className="w-5 h-5" /> : "2"}
               </div>
-              <span className="text-sm font-medium">Автомобиль</span>
+              <span className="text-xs tablet:text-sm font-medium whitespace-nowrap">Автомобиль</span>
             </div>
             {selectedService?.requiresParts && (
               <>
-                <ArrowRight className="w-4 h-4 text-muted-foreground" />
-                <div className="flex items-center gap-2">
+                <ArrowRight className="w-3 h-3 tablet:w-4 tablet:h-4 text-muted-foreground shrink-0" />
+                <div className="flex items-center gap-1.5 tablet:gap-2 shrink-0">
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+                    className={`w-8 h-8 tablet:w-10 tablet:h-10 rounded-full flex items-center justify-center font-semibold text-sm tablet:text-base ${
                       currentStep === "parts"
                         ? "bg-accent-gradient text-accent-foreground"
                         : selectedParts.length > 0
@@ -302,7 +302,7 @@ const Repair = () => {
                   >
                     {selectedParts.length > 0 ? <Check className="w-5 h-5" /> : "3"}
                   </div>
-                  <span className="text-sm font-medium">Запчасти</span>
+                  <span className="text-xs tablet:text-sm font-medium whitespace-nowrap">Запчасти</span>
                 </div>
               </>
             )}
@@ -311,7 +311,7 @@ const Repair = () => {
 
         {/* Step 1: Service Selection */}
         {currentStep === "service" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 tablet:grid-cols-2 xl:grid-cols-3 gap-4">
             {SERVICES.map((service) => (
               <Card
                 key={service.id}
@@ -472,18 +472,18 @@ const Repair = () => {
               </CardHeader>
               <CardContent>
                 <Tabs value={partsTab} onValueChange={(v) => setPartsTab(v as typeof partsTab)}>
-                  <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="cart">
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      Корзина ({cartItems.length})
+                  <TabsList className="grid w-full grid-cols-3 h-auto p-1 gap-0.5">
+                    <TabsTrigger value="cart" className="text-xs tablet:text-sm px-2 py-2">
+                      <ShoppingCart className="w-3.5 h-3.5 tablet:w-4 tablet:h-4 shrink-0 mr-1 tablet:mr-2" />
+                      <span className="truncate">Корзина ({cartItems.length})</span>
                     </TabsTrigger>
-                    <TabsTrigger value="catalog">
-                      <Package className="w-4 h-4 mr-2" />
-                      Каталог
+                    <TabsTrigger value="catalog" className="text-xs tablet:text-sm px-2 py-2">
+                      <Package className="w-3.5 h-3.5 tablet:w-4 tablet:h-4 shrink-0 mr-1 tablet:mr-2" />
+                      <span className="truncate">Каталог</span>
                     </TabsTrigger>
-                    <TabsTrigger value="user">
-                      <Car className="w-4 h-4 mr-2" />
-                      Свои запчасти
+                    <TabsTrigger value="user" className="text-xs tablet:text-sm px-2 py-2">
+                      <Car className="w-3.5 h-3.5 tablet:w-4 tablet:h-4 shrink-0 mr-1 tablet:mr-2" />
+                      <span className="truncate">Свои</span>
                     </TabsTrigger>
                   </TabsList>
 
@@ -520,7 +520,7 @@ const Repair = () => {
                   </TabsContent>
 
                   <TabsContent value="catalog" className="mt-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4">
                       {CATALOG_PARTS.map((part) => (
                         <Card key={part.id}>
                           <CardContent className="p-4">
@@ -592,9 +592,9 @@ const Repair = () => {
                     {selectedParts.map((part) => (
                       <div
                         key={part.partId}
-                        className="flex items-center justify-between p-3 border rounded-lg"
+                        className="flex flex-col tablet:flex-row tablet:items-center tablet:justify-between gap-2 p-3 border rounded-lg min-w-0"
                       >
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <p className="font-semibold">{part.name}</p>
                             <Badge variant="secondary" className="text-xs">
@@ -608,7 +608,7 @@ const Repair = () => {
                           <p className="text-sm text-muted-foreground">{part.brand}</p>
                           <p className="font-display text-foreground mt-1">{part.price}</p>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <Button
                             variant="outline"
                             size="icon"

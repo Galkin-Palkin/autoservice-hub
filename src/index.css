@@ -97,6 +97,20 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 1280px) {
+    #root {
+      max-width: 1280px;
+    }
   }
 
   h1, h2, h3, h4 {
