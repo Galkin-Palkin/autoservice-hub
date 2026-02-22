@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Search, Wrench, ArrowRight } from "lucide-react";
 
 const ActionCards = () => {
@@ -33,8 +34,8 @@ const ActionCards = () => {
           </a>
 
           {/* Запись на ремонт */}
-          <a
-            href="#service"
+          <Link
+            to="/repair"
             className="group relative rounded-2xl p-8 md:p-10 bg-hero-gradient border-2 border-border/10 hover:border-accent/30 transition-all duration-500 overflow-hidden hover:shadow-card-hover"
           >
             <div className="absolute inset-0 bg-accent-gradient opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
@@ -52,7 +53,7 @@ const ActionCards = () => {
                 Записаться <ArrowRight className="w-4 h-4" />
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

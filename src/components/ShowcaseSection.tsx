@@ -1,11 +1,14 @@
 import { ShoppingCart, Clock, Percent, Star, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { Part } from "@/types/part";
+import { useCart } from "@/context/CartContext";
+import { toast } from "sonner";
 
-const parts = [
-  { name: "Тормозные колодки Brembo", brand: "BMW 5 Series", price: "8 500 ₽", delivery: "В наличии", hot: true },
-  { name: "Масляный фильтр Mann", brand: "Toyota Camry", price: "1 200 ₽", delivery: "В наличии", hot: false },
-  { name: "Амортизатор KYB", brand: "Honda CR-V", price: "12 400 ₽", delivery: "2-3 дня", hot: false },
-  { name: "Свечи зажигания NGK", brand: "Volkswagen Golf", price: "3 800 ₽", delivery: "В наличии", hot: true },
+const parts: Part[] = [
+  { id: "part-1", name: "Тормозные колодки Brembo", brand: "BMW 5 Series", price: "8 500 ₽", delivery: "В наличии", hot: true },
+  { id: "part-2", name: "Масляный фильтр Mann", brand: "Toyota Camry", price: "1 200 ₽", delivery: "В наличии", hot: false },
+  { id: "part-3", name: "Амортизатор KYB", brand: "Honda CR-V", price: "12 400 ₽", delivery: "2-3 дня", hot: false },
+  { id: "part-4", name: "Свечи зажигания NGK", brand: "Volkswagen Golf", price: "3 800 ₽", delivery: "В наличии", hot: true },
 ];
 
 const promos = [
@@ -15,6 +18,13 @@ const promos = [
 ];
 
 const ShowcaseSection = () => {
+  const { addItem } = useCart();
+
+  const handleAddToCart = (part: Part) => {
+    addItem(part);
+    toast.success(`Добавлено: ${part.name}`);
+  };
+
   return (
     <section id="promo" className="py-16 md:py-24 bg-background">
       <div className="container">
@@ -55,7 +65,12 @@ const ShowcaseSection = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="font-display text-xl text-foreground">{part.price}</span>
-                  <Button size="sm" variant="outline" className="h-8 text-xs border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="h-8 text-xs border-accent/30 text-accent hover:bg-accent hover:text-accent-foreground"
+                    onClick={() => handleAddToCart(part)}
+                  >
                     <ShoppingCart className="w-3 h-3 mr-1" />
                     В корзину
                   </Button>

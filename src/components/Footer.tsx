@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
@@ -22,10 +23,10 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-sm uppercase tracking-wider mb-4 text-primary-foreground/70">Навигация</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/50">
-              <li><a href="#" className="hover:text-accent transition-colors">Каталог запчастей</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Запись на ремонт</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Прайс-лист</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Акции</a></li>
+              <li><Link to="/#parts" className="hover:text-accent transition-colors">Каталог запчастей</Link></li>
+              <li><Link to="/repair" className="hover:text-accent transition-colors">Запись на ремонт</Link></li>
+              <li><Link to="/#promo" className="hover:text-accent transition-colors">Прайс-лист</Link></li>
+              <li><Link to="/#promo" className="hover:text-accent transition-colors">Акции</Link></li>
             </ul>
           </div>
 
